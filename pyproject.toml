@@ -22,6 +22,7 @@ dev = [
     'mypy',
     'pre-commit',
     'pytest',
+    "pytest-random-order>=1.1.1",
     'ruff',
 ]
 
@@ -43,6 +44,7 @@ packages = ['hello_world']
 # log_file = '/path/to/logs/files/hello_world.log'
 
 [tool.pytest.ini_options]
+addopts = "--random-order"
 tmp_path_retention_policy = "none"
 testpaths = [
     "tests",
