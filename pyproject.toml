@@ -25,6 +25,9 @@ dev = [
     'ruff',
 ]
 
+[project.urls]
+Repository = "https://github.com/bsweger/python-app-template.git"
+
 [project.entry-points.'console_scripts']
 hello_world = 'hello_world.app:main'
 
@@ -38,6 +41,12 @@ packages = ['hello_world']
 [tool.hello_world]
 # to write json-formatted logs to disk, uncomment the following line specify the file location
 # log_file = '/path/to/logs/files/hello_world.log'
+
+[tool.pytest.ini_options]
+tmp_path_retention_policy = "none"
+testpaths = [
+    "tests",
+]
 
 [tool.ruff]
 line-length = 120
