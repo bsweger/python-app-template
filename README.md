@@ -1,4 +1,4 @@
-# python_app
+# pyprefab
 
 A Python template for personal use. The package itself doesn't do much, but I
 keep it up to date as my Python workflow and tooling preferences evolve.
@@ -8,7 +8,7 @@ keep it up to date as my Python workflow and tooling preferences evolve.
 To install this package via pip:
 
 ```bash
-pip install git+https://github.com/bsweger/python-app-template.git
+pip install git+https://github.com/bsweger/pyprefab.git
 ```
 
 To run it:
@@ -30,7 +30,7 @@ Prerequisites:
 2. Change to the repo's root directory:
 
     ```bash
-    cd python-app-template
+    cd pyprefab
     ```
 
 3. Create a Python virtual environment and install dependencies. The command

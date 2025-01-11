@@ -1,5 +1,5 @@
 [project]
-name = 'python-app'
+name = 'pyprefab'
 description = 'Python application template for personal use'
 license = {text = 'MIT License'}
 readme = 'README.md'
@@ -27,7 +27,7 @@ dev = [
 ]
 
 [project.urls]
-Repository = "https://github.com/bsweger/python-app-template.git"
+Repository = "https://github.com/bsweger/pyprefab.git"
 
 [project.entry-points.'console_scripts']
 hello_world = 'hello_world.app:main'

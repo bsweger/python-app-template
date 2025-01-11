@@ -1,7 +1,7 @@
-# .github/workflows/publish-pypi-test.yaml
+# .github/workflows/publish-pypi-test.yml
 # uses trusted publishing to publish the package to test-pypi as described here:
 # https://packaging.python.org/en/latest/guides/publishing-package-distribution-releases-using-github-actions-ci-cd-workflows/
-name: Publish to Test PyPI
+name: Publish to test PyPI
 
 on:
   push:
@@ -36,7 +36,27 @@ jobs:
       - name: Upload distribution packages 📤
         uses: actions/upload-artifact@v4
         with:
-          name: cladetime-package-distribution
+          name: package-distribution
           path: dist/
 
-# TODO: add a job for publishing to test-pypi
+  publish-to-testpypi:
+    name: Publish Python distribution to test PyPI
+    needs:
+    - build
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi-test
+      url: https://test.pypi.org/p/pyprefab
+    permissions:
+       id-token: write  # needed for trusted publishing (i.e., OIDC)
+
+    steps:
+    - name: Download distribution artifacts 📥
+      uses: actions/download-artifact@v4
+      with:
+        name: package-distribution
+        path: dist/
+    - name: Publish distribution to test PyPI 🚀
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        repository-url: https://test.pypi.org/legacy/
