@@ -1,0 +1,49 @@
+[project]
+name = '{{ project_name }}'
+dynamic = ['version']
+description = '{{ description }}'
+authors = [{name = '{{ author }}'}]
+
+dependencies = [
+    'structlog',
+]
+
+[dependency-groups]
+dev = [
+    'coverage',
+    'pytest',
+    'pytest-random-order>=1.1.1',
+    'ruff',
+]
+
+[build-system]
+requires = ['setuptools>=45', 'wheel', 'setuptools_scm>=8']
+build-backend = 'setuptools.build_meta'
+
+[tool.setuptools.packages.find]
+namespaces = true
+where = ['src']
+
+[tool.setuptools_scm]
+local_scheme = 'no-local-version'
+
+[tool.pytest.ini_options]
+addopts = '--random-order'
+testpaths = [
+    'tests',
+]
+
+[tool.ruff]
+line-length = 120
+lint.extend-select = ['I', 'Q']
+
+[tool.ruff.lint.flake8-quotes]
+inline-quotes = 'single'
+
+[tool.ruff.format]
+quote-style = 'single'
+
+[tool.uv]
+# https://docs.astral.sh/uv/concepts/cache/#dynamic-metadata
+cache-keys = [{ git = { commit = true, tags = true } }]
+

@@ -1,14 +1,13 @@
 # pyprefab
 
-A Python template for personal use. The package itself doesn't do much, but I
-keep it up to date as my Python workflow and tooling preferences evolve.
+Creates a new Python package from an opinioned set of templates.
 
 ## Installing and running the package (no development)
 
 To install this package via pip:
 
 ```bash
-pip install git+https://github.com/bsweger/pyprefab.git
+pip install pyprefab
 ```
 
 To run it:

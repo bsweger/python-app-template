@@ -28,6 +28,9 @@ dev = [
     'ruff',
 ]
 
+[project.scripts]
+pyprefab-create = "pyprefab.cli:app"
+
 [project.urls]
 Repository = "https://github.com/bsweger/pyprefab.git"
 
