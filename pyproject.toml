@@ -30,23 +30,26 @@ dev = [
 Repository = "https://github.com/bsweger/pyprefab.git"
 
 [project.entry-points.'console_scripts']
-hello_world = 'hello_world.app:main'
+pyprefab = 'pyprefab.app:main'
 
 [build-system]
 # Minimum requirements for the build system to execute.
-requires = ['setuptools', 'wheel', "setuptools_scm>=8"]
+requires = ['setuptools>=45', 'wheel', "setuptools_scm>=8"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 namespaces = true
 where = ["src"]
 
+[tool.setuptools.package-data]
+"pyprojgen.templates" = ["*.j2", "*.jinja2", "*"]
+
 [tool.setuptools_scm]
 local_scheme = "no-local-version"
 
-[tool.hello_world]
+[tool.pyprefab]
 # to write json-formatted logs to disk, uncomment the following line specify the file location
-# log_file = '/path/to/logs/files/hello_world.log'
+# log_file = '/path/to/logs/files/pyprefab.log'
 
 [tool.pytest.ini_options]
 addopts = "--random-order"

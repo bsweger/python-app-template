@@ -2,11 +2,11 @@ import sys
 
 import structlog
 
-import hello_world
+import pyprefab
 
 
 def add_custom_info(logger, method_name, event_dict):
-    event_dict['version'] = hello_world.__version__
+    event_dict['version'] = pyprefab.__version__
     return event_dict
 
 

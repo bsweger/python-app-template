@@ -2,7 +2,7 @@
 
 from freezegun import freeze_time
 
-from hello_world.util.date import get_current_date
+from pyprefab.util.date import get_current_date
 
 
 @freeze_time('2024-01-02')

@@ -14,7 +14,7 @@ pip install git+https://github.com/bsweger/pyprefab.git
 To run it:
 
 ```bash
-hello_world
+pyprefab
 ```
 
 ## Setup for local development

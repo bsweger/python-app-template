@@ -1,7 +1,7 @@
 import structlog
 
-from hello_world.util.date import get_current_date
-from hello_world.util.logs import setup_logging
+from pyprefab.util.date import get_current_date
+from pyprefab.util.logs import setup_logging
 
 setup_logging()
 logger = structlog.get_logger()

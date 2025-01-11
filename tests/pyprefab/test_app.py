@@ -1,6 +1,6 @@
 from freezegun import freeze_time
 
-from hello_world.app import main
+from pyprefab.app import main
 
 
 @freeze_time('2019-07-13')
