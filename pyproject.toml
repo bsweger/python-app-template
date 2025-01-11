@@ -64,3 +64,9 @@ inline-quotes = 'single'
 
 [tool.ruff.format]
 quote-style = 'single'
+
+[tool.uv]
+# ensure setuptools_scm generates a version number that reflects latest tags
+# https://docs.astral.sh/uv/concepts/cache/#dynamic-metadata
+cache-keys = [{ git = { commit = true, tags = true } }]
+
