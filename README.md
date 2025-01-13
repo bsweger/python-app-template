@@ -15,9 +15,9 @@ pip install pyprefab
 Use pyprefab's command line interface to create a new Python package:
 
 ```bash
-➜ pyprefab-create --help
+➜ pyprefab --help
 
- Usage: pyprefab-create [OPTIONS] NAME
+ Usage: pyprefab [OPTIONS] NAME
 
  Generate a new Python project from templates.
 
