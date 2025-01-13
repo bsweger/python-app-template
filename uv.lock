@@ -369,7 +369,7 @@ wheels = [
 
 [[package]]
 name = "pyprefab"
-version = "0.2.2.dev3"
+version = "0.2.2.dev2"
 source = { editable = "." }
 dependencies = [
     { name = "jinja2" },

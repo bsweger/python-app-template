@@ -29,13 +29,10 @@ dev = [
 ]
 
 [project.scripts]
-pyprefab-create = "pyprefab.cli:app"
+pyprefab = "pyprefab.cli:app"
 
 [project.urls]
 Repository = "https://github.com/bsweger/pyprefab.git"
-
-[project.entry-points.'console_scripts']
-pyprefab = 'pyprefab.app:main'
 
 [build-system]
 # Minimum requirements for the build system to execute.
