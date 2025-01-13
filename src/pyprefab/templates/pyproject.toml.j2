@@ -3,6 +3,11 @@ name = '{{ project_name }}'
 dynamic = ['version']
 description = '{{ description }}'
 authors = [{name = '{{ author }}'}]
+maintainers = [{name = '{{ author }}'}]
+license = {text = 'MIT License'}
+
+requires-python = '>=3.9'
+readme = 'README.md'
 
 dependencies = [
     'structlog',
@@ -16,6 +21,11 @@ dev = [
     'ruff',
 ]
 
+[project.scripts]
+{{ project_name }} = '{{ project_name }}.app:main'
+
+[project.urls]
+
 [build-system]
 requires = ['setuptools>=45', 'wheel', 'setuptools_scm>=8']
 build-backend = 'setuptools.build_meta'
@@ -25,12 +35,13 @@ namespaces = true
 where = ['src']
 
 [tool.setuptools_scm]
+fallback_version = '0.0.0.dev0'
 local_scheme = 'no-local-version'
 
 [tool.pytest.ini_options]
 addopts = '--random-order'
 testpaths = [
-    'tests',
+    'test',
 ]
 
 [tool.ruff]
@@ -42,8 +53,4 @@ inline-quotes = 'single'
 
 [tool.ruff.format]
 quote-style = 'single'
-
-[tool.uv]
-# https://docs.astral.sh/uv/concepts/cache/#dynamic-metadata
-cache-keys = [{ git = { commit = true, tags = true } }]
 

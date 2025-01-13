@@ -47,13 +47,25 @@ def create(
 
         # Process templates
         env = Environment(loader=FileSystemLoader(templates_dir))
+        path_env = Environment()  # For rendering path names
+        #env = Environment(loader=FileSystemLoader(templates_dir))
         for template_file in templates_dir.rglob('*'):
             if template_file.is_file():
-                template = env.get_template(template_file.name)
+                rel_path = template_file.relative_to(templates_dir)
+                template = env.get_template(str(rel_path))
                 output = template.render(**context)
                 
-                rel_path = template_file.relative_to(templates_dir)
-                dest_file = target_dir / rel_path.with_suffix('').name
+                # Process path parts through Jinja
+                path_parts = []
+                for part in rel_path.parts:
+                    # Render each path component through Jinja
+                    rendered_part = path_env.from_string(part).render(**context)
+                    if rendered_part.endswith('.j2'):
+                        rendered_part = rendered_part[:-3]
+                    path_parts.append(rendered_part)
+                    
+                # Create destination path preserving structure
+                dest_file = target_dir.joinpath(*path_parts)
                 dest_file.parent.mkdir(parents=True, exist_ok=True)
                 dest_file.write_text(output)
 
