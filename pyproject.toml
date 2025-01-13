@@ -60,7 +60,7 @@ local_scheme = "no-local-version"
 addopts = "--random-order"
 tmp_path_retention_policy = "none"
 testpaths = [
-    "tests",
+    "test",
 ]
 
 [tool.ruff]
