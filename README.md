@@ -2,7 +2,7 @@
 
 Creates a new Python package from an opinioned set of templates.
 
-## Installing and running the package (no development)
+## Installing pyprefab
 
 To install this package via pip:
 
@@ -10,58 +10,70 @@ To install this package via pip:
 pip install pyprefab
 ```
 
-To run it:
+## Generating boilerplate for a new Python package
+
+Use pyprefab's command line interface to create a new Python package:
 
 ```bash
-pyprefab
+➜ pyprefab-create --help
+
+ Usage: pyprefab-create [OPTIONS] NAME
+
+ Generate a new Python project from templates.
+
+╭─ Arguments ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ *    name      TEXT  Name of the project [default: None] [required]                                                           │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ *  --author                    TEXT  Project author [default: None] [required]                                                │
+│    --description               TEXT  Project description                                                                      │
+│    --directory                 PATH  Directory that will contain the project (defaults to current directory) [default: None]  │
+│    --install-completion              Install completion for the current shell.                                                │
+│    --show-completion                 Show completion for the current shell, to copy it or customize the installation.         │
+│    --help                            Show this message and exit.                                                              │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 
-## Setup for local development
+## Setting up the package's dev environment
 
-The instructions below outline how to set up a development environment based
-on uv tooling.
+Follow the steps below to create a development environment for the package.
 
-Prerequisites:
+These directions use `uv`, but you can use your preferred tooling.
 
-- [uv](https://docs.astral.sh/uv/getting-started/installation/)
+1. `cd` to the directory of the new Python package
 
-1. Clone this repository
-2. Change to the repo's root directory:
+2. Create a virtual environment seeded with pip:
 
-    ```bash
-    cd pyprefab
+    ```script
+    uv venv --seed
     ```
 
-3. Create a Python virtual environment and install dependencies. The command
-below creates a virtual environment in the `.venv` directory, installs Python
-if needed, installs project dependencies (including dev dependencies), and
-installs the package in
-[editable mode](https://setuptools.pypa.io/en/stable/userguide/development_mode.html):
+3. Install dependencies + project as editable module
 
-    ```bash
+    ```script
     uv sync
     ```
 
-4. Run the test suite to confirm that everything is working:
+4. **Optional:** If you use [pre-commit](https://pre-commit.com/), the boilerplate
+includes a baseline `pre-commit-config.yaml`. Install pre-commit to use it:
 
-    ```bash
-    uv run pytest
+    ```script
+    pre-commit install
     ```
 
-### Updating dependencies
+5. Test the project setupt:
 
-Use [`uv add`](https://docs.astral.sh/uv/reference/cli/#uv-add) to include a
-new dependency in the project. This command will install the new dependency
-into the virtual environment, add it to `uv.lock`, and update the
-`dependencies` section of [`pyproject.toml`](pyproject.toml).
+    ```script
+    <your_package_name>
+    ```
 
-```bash
-uv add <package-name>
-```
+    You should see a log output stating that the project has been set up correctly.
 
-To add a dependency to a specific group (adding a dev dependency, for example),
-use the `--group` flag:
+    For example:
+    `2025-01-13 02:29:08 [info     ] project_test successfully created.`
 
-```bash
-uv add <package-name> --group dev
-```
+    You can also run the tests:
+
+    ```script
+    pytest
+    ```
