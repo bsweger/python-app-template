@@ -34,6 +34,12 @@ Use pyprefab's command line interface to create a new Python package:
 ╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 
+For example:
+
+```
+pyprefab-create project_test --author lassie --description "this is a pet project for lassie" --directory ~/code/lassie
+```
+
 ## Setting up the package's dev environment
 
 Follow the steps below to create a development environment for the package.
@@ -54,17 +60,10 @@ These directions use `uv`, but you can use your preferred tooling.
     uv sync
     ```
 
-4. **Optional:** If you use [pre-commit](https://pre-commit.com/), the boilerplate
-includes a baseline `pre-commit-config.yaml`. Install pre-commit to use it:
+4. Test the project setupt:
 
     ```script
-    pre-commit install
-    ```
-
-5. Test the project setupt:
-
-    ```script
-    <your_package_name>
+    uv run <your_package_name>
     ```
 
     You should see a log output stating that the project has been set up correctly.
@@ -75,5 +74,34 @@ includes a baseline `pre-commit-config.yaml`. Install pre-commit to use it:
     You can also run the tests:
 
     ```script
+    uv run pytest
+    ```
+
+    **Note:** `uv run` runs commands in the virtual environment created by uv
+    (see step 2). Alternately, you can activate the virtual environment the
+    old-fashioned way and then run commands without the `uv run` prefix:
+
+    ```script
+    source .venv/bin/activate
+    <your package name>
     pytest
+    ```
+
+**Optional:**
+
+- Add the new project to a git repository:
+
+    ```script
+    git init
+    git add .
+    git commit -am "Initial commit"
+    ```
+
+- If you use [pre-commit](https://pre-commit.com/), pyprefab's boilerplate
+includes a baseline `pre-commit-config.yaml` configuration. To use it, make
+sure the project has been added to git (see above) and run the following
+command to install the pre-commit git hook scripts:
+
+    ```script
+    pre-commit install
     ```
