@@ -64,7 +64,6 @@ def create(
             keep_trailing_newline=True,
         )
         for template_file in templates_dir.rglob('*'):
-            logger.info(f'Template file: {template_file}')
             if template_file.is_file():
                 rel_path = template_file.relative_to(templates_dir)
                 template = env.get_template(str(rel_path))
@@ -80,13 +79,10 @@ def create(
                     path_parts.append(rendered_part)
 
                 # Create destination path preserving structure
-                logger.info(target_dir.joinpath(*path_parts))
                 dest_file = target_dir.joinpath(*path_parts)
-                logger.info(f'Creating {dest_file}')
                 dest_file.parent.mkdir(parents=True, exist_ok=True)
                 with open(dest_file, 'w', newline='\n') as f:
                     f.write(output)
-                # dest_file.write_text(output)
 
         print(
             Panel.fit(
