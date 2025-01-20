@@ -4,10 +4,13 @@ import shutil
 from pathlib import Path
 from typing import Optional
 
+import structlog
 import typer
 from jinja2 import Environment, FileSystemLoader
 from rich import print
 from rich.panel import Panel
+
+logger = structlog.get_logger()
 
 app = typer.Typer(help='Generate python project scaffolding based on pyprefab.')
 
@@ -48,10 +51,20 @@ def create(
         }
 
         # Process templates
-        env = Environment(loader=FileSystemLoader(templates_dir))
-        path_env = Environment()  # For rendering path names
-        # env = Environment(loader=FileSystemLoader(templates_dir))
+        env = Environment(
+            loader=FileSystemLoader(templates_dir),
+            trim_blocks=True,
+            lstrip_blocks=True,
+            keep_trailing_newline=True,
+        )
+        # For rendering path names
+        path_env = Environment(
+            trim_blocks=True,
+            lstrip_blocks=True,
+            keep_trailing_newline=True,
+        )
         for template_file in templates_dir.rglob('*'):
+            logger.info(f'Template file: {template_file}')
             if template_file.is_file():
                 rel_path = template_file.relative_to(templates_dir)
                 template = env.get_template(str(rel_path))
@@ -67,9 +80,13 @@ def create(
                     path_parts.append(rendered_part)
 
                 # Create destination path preserving structure
+                logger.info(target_dir.joinpath(*path_parts))
                 dest_file = target_dir.joinpath(*path_parts)
+                logger.info(f'Creating {dest_file}')
                 dest_file.parent.mkdir(parents=True, exist_ok=True)
-                dest_file.write_text(output)
+                with open(dest_file, 'w', newline='\n') as f:
+                    f.write(output)
+                # dest_file.write_text(output)
 
         print(
             Panel.fit(
@@ -94,4 +111,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
