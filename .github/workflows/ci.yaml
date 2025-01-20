@@ -39,8 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        #python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
-        python-version: ["3.9", "3.10"]
+        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
 
     steps:
       - name: Checkout 🛎️
@@ -55,13 +54,16 @@ jobs:
             version: ">=0.0.1"
 
       - name: Test with python ${{ matrix.python-version }} 🧪
-        run: uv run --frozen coverage run -m pytest
+        run: |
+          uv run --frozen coverage run \
+            --data-file .coverage.${{ matrix.python-version }} \
+            -m pytest
 
       - name: Upload coverage data 📤
         uses: actions/upload-artifact@v4
         with:
           name: coverage-data-${{ matrix.python-version }}
-          path: .coverage*
+          path: .coverage.*
           include-hidden-files: true
           if-no-files-found: ignore
 
@@ -88,11 +90,6 @@ jobs:
         with:
           pattern: coverage-data-*
           merge-multiple: true
-
-      - name: Debug stuff 🐞
-        run: |
-          ls -la
-          pwd
 
       - name: Generate coverage report 📊
         run: |
