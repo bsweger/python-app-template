@@ -39,7 +39,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
+        #python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
+        python-version: ["3.9", "3.10"]
 
     steps:
       - name: Checkout 🛎️
@@ -88,11 +89,16 @@ jobs:
           pattern: coverage-data-*
           merge-multiple: true
 
+      - name: Debug stuff 🐞
+        run: |
+          ls -la
+          pwd
+
       - name: Generate coverage report 📊
         run: |
           uv tool install 'coverage[toml]'
 
-          coverage combine coverage-data-*
+          coverage combine
           coverage html --skip-covered --skip-empty
           coverage report --format=markdown >> $GITHUB_STEP_SUMMARY
 
