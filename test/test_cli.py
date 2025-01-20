@@ -19,6 +19,7 @@ def test_pyprefab_cli(tmp_path):
         if child.is_dir():
             dir_names.append(child.name)
             dir_count += 1
-    assert dir_count == 2
+    assert dir_count == 3
+    assert '.github' in dir_names
     assert 'src' in dir_names
     assert 'test' in dir_names
