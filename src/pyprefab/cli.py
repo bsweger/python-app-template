@@ -20,6 +20,44 @@ def validate_project_name(name: str) -> bool:
     return name.isidentifier() and name.islower()
 
 
+def render_templates(context: dict, templates_dir: Path, target_dir: Path):
+    """Render Jinja templates to target directory."""
+    # Process templates
+    env = Environment(
+        loader=FileSystemLoader(templates_dir),
+        trim_blocks=True,
+        lstrip_blocks=True,
+        keep_trailing_newline=True,
+    )
+    # For rendering path names
+    path_env = Environment(
+        trim_blocks=True,
+        lstrip_blocks=True,
+        keep_trailing_newline=True,
+    )
+
+    for template_file in templates_dir.rglob('*'):
+        if template_file.is_file():
+            rel_path = template_file.relative_to(templates_dir)
+            template = env.get_template(str(rel_path))
+            output = template.render(**context)
+
+            # Process path parts through Jinja
+            path_parts = []
+            for part in rel_path.parts:
+                # Render each path component through Jinja
+                rendered_part = path_env.from_string(part).render(**context)
+                if rendered_part.endswith('.j2'):
+                    rendered_part = rendered_part[:-3]
+                path_parts.append(rendered_part)
+
+            # Create destination path preserving structure
+            dest_file = target_dir.joinpath(*path_parts)
+            dest_file.parent.mkdir(parents=True, exist_ok=True)
+            with open(dest_file, 'w', newline='\n') as f:
+                f.write(output)
+
+
 @app.command()
 def create(
     name: str = typer.Argument(..., help='Name of the project'),
@@ -50,39 +88,8 @@ def create(
             'description': description,
         }
 
-        # Process templates
-        env = Environment(
-            loader=FileSystemLoader(templates_dir),
-            trim_blocks=True,
-            lstrip_blocks=True,
-            keep_trailing_newline=True,
-        )
-        # For rendering path names
-        path_env = Environment(
-            trim_blocks=True,
-            lstrip_blocks=True,
-            keep_trailing_newline=True,
-        )
-        for template_file in templates_dir.rglob('*'):
-            if template_file.is_file():
-                rel_path = template_file.relative_to(templates_dir)
-                template = env.get_template(str(rel_path))
-                output = template.render(**context)
-
-                # Process path parts through Jinja
-                path_parts = []
-                for part in rel_path.parts:
-                    # Render each path component through Jinja
-                    rendered_part = path_env.from_string(part).render(**context)
-                    if rendered_part.endswith('.j2'):
-                        rendered_part = rendered_part[:-3]
-                    path_parts.append(rendered_part)
-
-                # Create destination path preserving structure
-                dest_file = target_dir.joinpath(*path_parts)
-                dest_file.parent.mkdir(parents=True, exist_ok=True)
-                with open(dest_file, 'w', newline='\n') as f:
-                    f.write(output)
+        # Write Jinja templates to project directory
+        render_templates(context, templates_dir, target_dir)
 
         print(
             Panel.fit(
