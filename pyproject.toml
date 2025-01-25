@@ -35,6 +35,7 @@ pyprefab = "pyprefab.cli:app"
 
 [project.urls]
 Repository = "https://github.com/bsweger/pyprefab.git"
+Changelog = "https://github.com/bsweger/pyprefab/blob/main/CHANGELOG.md"
 
 [build-system]
 # Minimum requirements for the build system to execute.
