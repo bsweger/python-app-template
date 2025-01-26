@@ -9,10 +9,11 @@ import typer
 from jinja2 import Environment, FileSystemLoader
 from rich import print
 from rich.panel import Panel
+from typing_extensions import Annotated
 
 logger = structlog.get_logger()
 
-app = typer.Typer(help='Generate python project scaffolding based on pyprefab.')
+app = typer.Typer(add_completion=False, help='Generate python project scaffolding based on pyprefab.')
 
 
 def validate_project_name(name: str) -> bool:
@@ -60,12 +61,20 @@ def render_templates(context: dict, templates_dir: Path, target_dir: Path):
 
 @app.command()
 def create(
-    name: str = typer.Argument(..., help='Name of the project'),
-    author: str = typer.Option(..., '--author', help='Project author'),
-    description: str = typer.Option('', '--description', help='Project description'),
-    project_dir: Optional[Path] = typer.Option(
-        None, '--directory', help='Directory that will contain the project (defaults to current directory)'
-    ),
+    name: Annotated[str, typer.Argument(help='Name of the project', show_default=False)],
+    author: Annotated[Optional[str], typer.Option(help='Project author', prompt='Project author', show_default=False)],
+    description: Annotated[
+        Optional[str], typer.Option(help='Project description', prompt='Project description', show_default=False)
+    ],
+    project_dir: Annotated[
+        Optional[Path],
+        typer.Option(
+            '--dir',
+            help='Directory that will contain the project',
+            prompt='Project directory',
+            show_default=False,
+        ),
+    ],
 ):
     """Generate a new Python project from templates."""
     if not validate_project_name(name):

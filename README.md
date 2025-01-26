@@ -27,7 +27,7 @@ Use pyprefab's command line interface to create a new Python package:
 ╭─ Options ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
 │ *  --author                    TEXT  Project author [default: None] [required]                                                │
 │    --description               TEXT  Project description                                                                      │
-│    --directory                 PATH  Directory that will contain the project (defaults to current directory) [default: None]  │
+│    --dir                       PATH  Directory that will contain the project (defaults to current directory) [default: None]  │
 │    --install-completion              Install completion for the current shell.                                                │
 │    --show-completion                 Show completion for the current shell, to copy it or customize the installation.         │
 │    --help                            Show this message and exit.                                                              │
