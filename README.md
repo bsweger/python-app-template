@@ -105,3 +105,8 @@ command to install the pre-commit git hook scripts:
     ```script
     pre-commit install
     ```
+
+## Contributing to pyprefab
+
+Please refer to
+[CONTRIBUTING.md](https://github.com/bsweger/pyprefab/blob/main/CONTRIBUTING.md).
