@@ -74,6 +74,14 @@ def test_changelog(cli_output):
         assert 'notable changes to transporter_logs are documented here' in changelog
 
 
+def test_contributing(cli_output):
+    """Location and contents of CHANGELOG.md are correct."""
+    project_path, cli_result = cli_output
+    with open(project_path / 'CONTRIBUTING.md', 'r') as f:
+        contributing = f.read()
+        assert 'contributing to transporter_logs' in contributing.lower()
+
+
 def test_readme(cli_output):
     """Location and contents of README.md are correct."""
     project_path, cli_result = cli_output
