@@ -13,7 +13,11 @@ from typing_extensions import Annotated
 
 logger = structlog.get_logger()
 
-app = typer.Typer(add_completion=False, help='Generate python project scaffolding based on pyprefab.')
+app = typer.Typer(
+    add_completion=False,
+    help='Generate python project scaffolding based on pyprefab.',
+    rich_markup_mode='markdown',
+)
 
 
 def validate_project_name(name: str) -> bool:
@@ -76,7 +80,9 @@ def create(
         ),
     ],
 ):
-    """Generate a new Python project from templates."""
+    """
+    :snake: **Create Python package boilerplate** :snake:
+    """
     if not validate_project_name(name):
         typer.secho(
             f'Error: {name} is not a valid Python package name',
