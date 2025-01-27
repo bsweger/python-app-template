@@ -4,7 +4,7 @@ All notable changes to `pyprefab` are documented here.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com), and the project uses [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [0.4.0] - [2025-01-26]
 
 ### Added
 
@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and the p
 - Add CLI prompts as an alternate to passing command options
 - `--directory` option renamed to `--dir`
 - Prompt user when specified project directory is not empty
+- List created package components on README.md
 
 ### Fixed
 
