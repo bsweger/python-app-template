@@ -67,7 +67,7 @@ def create(
         Optional[str], typer.Option(help='Project description', prompt='Project description', show_default=False)
     ],
     project_dir: Annotated[
-        Optional[Path],
+        Path,
         typer.Option(
             '--dir',
             help='Directory that will contain the project',
@@ -83,6 +83,13 @@ def create(
             fg=typer.colors.RED,
         )
         raise typer.Exit(1)
+
+    if project_dir.exists() and any(project_dir.iterdir()):
+        proceed = typer.confirm(f'Directory {project_dir} is not empty. Proceed?')
+        if not proceed:
+            typer.secho(f'{name} not created', fg=typer.colors.YELLOW)
+            raise typer.Exit(code=1)
+
     templates_dir = Path(__file__).parent / 'templates'
     target_dir = project_dir or Path.cwd() / name
 

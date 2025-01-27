@@ -11,6 +11,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and the p
 - New templates for GitHub workflows: ci (linting, tests, and coverage), publishing to TestPyPI, and publishing to PyPI
 - Project changelog
 - New CHANGELOG.md template
+- New CONTRIBUTING.md template
+
+### Changed
+
+- Add CLI prompts as an alternate to passing command options
+- `--directory` option renamed to `--dir`
+- Prompt user when specified project directory is not empty
+
+### Fixed
+
+- Correct CLI example on README.md
 
 ## [0.3.2] - [2025-01-13](https://github.com/bsweger/pyprefab/compare/v0.3.1...v0.3.2)
 
