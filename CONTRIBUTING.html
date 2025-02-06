@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Contributing &#8212; pyprefab 0.3.3.dev5 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b20cc3f5" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=686e5160" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=b873d99f" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=49713722" />
+    <script src="_static/documentation_options.js?v=4d79dc7f"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Changelog" href="CHANGELOG.html" />
+    <link rel="prev" title="Using Pyprefab" href="usage.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="contributing">
+<h1>Contributing<a class="headerlink" href="#contributing" title="Link to this heading">¶</a></h1>
+<p>This is a personal, very-part-time project, largely driven by my own opinions
+about how best to configure a Python code base.</p>
+<p>Contributions as described below are welcome.</p>
+<section id="reporting-bugs">
+<h2>Reporting bugs<a class="headerlink" href="#reporting-bugs" title="Link to this heading">¶</a></h2>
+<p>If something isn’t working as described, or if you find a mistake in the
+documentation, please feel free to report a bug by
+<a class="reference external" href="https://github.com/bsweger/pyprefab/issues">opening an issue</a>.</p>
+</section>
+<section id="contributing-to-the-code-base">
+<h2>Contributing to the code base<a class="headerlink" href="#contributing-to-the-code-base" title="Link to this heading">¶</a></h2>
+<p>Contributions to the code base are welcome. If you want to add a new feature,
+please open an issue first. Because <code class="docutils literal notranslate"><span class="pre">pyprefab</span></code> is an opinion-drive personal
+project, it’s best to make sure our opinions are aligned before doing any work!</p>
+<p>If you’d like to tackle an existing issue, please leave a comment on it.</p>
+<section id="creating-your-local-development-environment">
+<h3>Creating your local development environment<a class="headerlink" href="#creating-your-local-development-environment" title="Link to this heading">¶</a></h3>
+<p>For contributing to this code base, you’ll need:</p>
+<ul class="simple">
+<li><p>A <a class="reference external" href="https://github.com/">GitHub account</a></p></li>
+<li><p><a class="reference external" href="https://git-scm.com/">Git</a> installed on your machine</p></li>
+<li><p><strong>optional</strong>: <a class="reference external" href="https://docs.astral.sh/uv/getting-started/installation/">uv</a>
+(the Python-based directions below use <code class="docutils literal notranslate"><span class="pre">uv</span></code>, but if you
+already have a preferred Python toolset, that should work too)</p></li>
+</ul>
+<blockquote>
+<div><p>[!IMPORTANT]
+If you have an active Python virtual environment (for example, conda’s
+base environment), you’ll need to deactivate it before following the
+instructions below.</p>
+</div></blockquote>
+<section id="configure-git">
+<h4>Configure git<a class="headerlink" href="#configure-git" title="Link to this heading">¶</a></h4>
+<ol class="arabic">
+<li><p>On GitHub, <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo">fork</a> this repository.</p></li>
+<li><p>Clone the forked repository to your machine:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/&lt;username&gt;/pyprefab.git
+<span class="nb">cd</span><span class="w"> </span>pyprefab
+</pre></div>
+</div>
+</li>
+<li><p><strong>optional:</strong> Set the <code class="docutils literal notranslate"><span class="pre">upstream</span></code> remote to sync your fork with the <code class="docutils literal notranslate"><span class="pre">pyprefab</span></code>
+repository:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://github.com/bsweger/pyprefab.git
+git<span class="w"> </span>fetch<span class="w"> </span>upstream
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="install-project-and-dependencies">
+<h4>Install project and dependencies<a class="headerlink" href="#install-project-and-dependencies" title="Link to this heading">¶</a></h4>
+<ol class="arabic">
+<li><p>From the root of the repo, create a virtual environment and install the
+project dependencies. The
+<a class="reference external" href="https://docs.astral.sh/uv/reference/cli/#uv-sync"><code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">sync</span></code> command</a> handles
+installing Python, creating a virtual environment, and installing project
+dependencies.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>sync
+</pre></div>
+</div>
+<p>(More information about how uv
+<a class="reference external" href="https://docs.astral.sh/uv/reference/cli/#uv-python">finds or downloads a Python interpreter</a>)</p>
+</li>
+<li><p>Run the test suite to check that everything works correctly:</p>
+<blockquote>
+<div><p>[!TIP]
+Prefixing python commands with <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">run</span></code> instructs uv to run the command
+in the project’s virtual environment, even if you haven’t explicitly
+activated it.</p>
+</div></blockquote>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>pytest
+</pre></div>
+</div>
+</li>
+<li><p>Install the <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> hooks used for linting and other checks (this may
+take a few minutes but only needs to be done once).</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>pre-commit<span class="w"> </span>install
+</pre></div>
+</div>
+</li>
+<li><p>Make sure the <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> checks are working correctly:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>pre-commit<span class="w"> </span>install
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<section id="updating-your-development-environment">
+<h3>Updating your development environment<a class="headerlink" href="#updating-your-development-environment" title="Link to this heading">¶</a></h3>
+<p>If time has passed between your initial project setup and when you make changes
+to the code, make sure your fork and development environment are up-to-date.</p>
+<ol class="arabic">
+<li><p>Sync your fork to the upstream repository:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>main
+git<span class="w"> </span>fetch<span class="w"> </span>upstream
+git<span class="w"> </span>rebase<span class="w"> </span>upstream/main
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</pre></div>
+</div>
+</li>
+<li><p>Update your project dependencies:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>sync
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="adding-project-dependencies">
+<h3>Adding project dependencies<a class="headerlink" href="#adding-project-dependencies" title="Link to this heading">¶</a></h3>
+<p>If your change requires a new dependency, add it as follows:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>add<span class="w"> </span>&lt;dependency&gt;
+</pre></div>
+</div>
+<p>The <a class="reference external" href="https://docs.astral.sh/uv/reference/cli/#uv-add"><code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">add</span></code></a> command will:</p>
+<ul class="simple">
+<li><p>Add the dependency to <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code></p></li>
+<li><p>Install the dependency into the project’s virtual environment</p></li>
+<li><p>Update the project’s lockfile (<code class="docutils literal notranslate"><span class="pre">uv.lock</span></code>)</p></li>
+</ul>
+<p>Make sure to commit the updated versions of <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> and <code class="docutils literal notranslate"><span class="pre">uv.lock</span></code>.</p>
+</section>
+<section id="submitting-code-changes">
+<h3>Submitting code changes<a class="headerlink" href="#submitting-code-changes" title="Link to this heading">¶</a></h3>
+<p>After you’ve completed the changes described in the issue you’re working on,
+you can submit them by <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork">creating a pull request</a> (PR) in the <code class="docutils literal notranslate"><span class="pre">pyprefab</span></code> repository.</p>
+<p>Please ensure the following are true before creating the PR:</p>
+<ul class="simple">
+<li><p>Your change is covered by tests, if applicable</p></li>
+<li><p>All tests pass (<code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">run</span> <span class="pre">pytest</span></code>)</p></li>
+<li><p>All pre-commit checks are successful
+(these checks will run automatically as you make commits)</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">[Unreleased]</span></code> section of <a class="reference internal" href="CHANGELOG.html"><span class="std std-doc">CHANGELOG.md</span></a> contains a
+description of your change.</p></li>
+</ul>
+<p>The PR itself should:</p>
+<ul class="simple">
+<li><p>Have a descriptive title</p></li>
+<li><p>Be <a class="reference external" href="https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue">linked to its corresponding issue</a>
+in the description.</p></li>
+<li><p>Have a description that includes any other information or context that will
+help a code reviewer understand your changes.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">pyprefab</a></h1>
+
+
+
+<p class="blurb">Simple CLI for Python project scaffolding</p>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Using Pyprefab</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#reporting-bugs">Reporting bugs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#contributing-to-the-code-base">Contributing to the code base</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="usage.html" title="previous chapter">Using Pyprefab</a></li>
+      <li>Next: <a href="CHANGELOG.html" title="next chapter">Changelog</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, Becky Sweger.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/CONTRIBUTING.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/bsweger/pyprefab" class="github">
+        <img src="_static/github-banner.svg" alt="Fork me on GitHub" class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>
