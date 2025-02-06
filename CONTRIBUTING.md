@@ -1,4 +1,4 @@
-# Contributing to pyprefab
+# Contributing
 
 This is a personal, very-part-time project, largely driven by my own opinions
 about how best to configure a Python code base.
@@ -40,7 +40,7 @@ already have a preferred Python toolset, that should work too)
 
 2. Clone the forked repository to your machine:
 
-    ```script
+    ```sh
     git clone https://github.com/<username>/pyprefab.git
     cd pyprefab
     ```
@@ -48,7 +48,7 @@ already have a preferred Python toolset, that should work too)
 3. **optional:** Set the `upstream` remote to sync your fork with the `pyprefab`
 repository:
 
-    ```script
+    ```sh
     git remote add upstream https://github.com/bsweger/pyprefab.git
     git fetch upstream
     ```
@@ -61,7 +61,7 @@ project dependencies. The
 installing Python, creating a virtual environment, and installing project
 dependencies.
 
-    ```script
+    ```sh
     uv sync
     ```
 
@@ -75,20 +75,20 @@ dependencies.
     > in the project's virtual environment, even if you haven't explicitly
     > activated it.
 
-    ```script
+    ```sh
     uv run pytest
     ```
 
 3. Install the `pre-commit` hooks used for linting and other checks (this may
 take a few minutes but only needs to be done once).
 
-    ```script
+    ```sh
     uv run pre-commit install
     ```
 
 4. Make sure the `pre-commit` checks are working correctly:
 
-    ```script
+    ```sh
     uv run pre-commit install
     ```
 
@@ -99,7 +99,7 @@ to the code, make sure your fork and development environment are up-to-date.
 
 1. Sync your fork to the upstream repository:
 
-    ```script
+    ```sh
     git checkout main
     git fetch upstream
     git rebase upstream/main
@@ -108,7 +108,7 @@ to the code, make sure your fork and development environment are up-to-date.
 
 2. Update your project dependencies:
 
-    ```script
+    ```sh
     uv sync
     ```
 
@@ -116,7 +116,7 @@ to the code, make sure your fork and development environment are up-to-date.
 
 If your change requires a new dependency, add it as follows:
 
-```script
+```sh
 uv add <dependency>
 ```
 
