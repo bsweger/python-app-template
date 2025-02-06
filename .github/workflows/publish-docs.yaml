@@ -26,24 +26,24 @@ jobs:
     permissions:
       contents: write
 
-  steps:
-    - name: Checkout 🛎️
-      uses: actions/checkout@v4
-      with:
-        persist-credentials: false
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
-    - name: Install uv 🌟
-      uses: astral-sh/setup-uv@v4db96194c378173c656ce18a155ffc14a9fc4355  # v5.2.2
+      - name: Install uv 🌟
+        uses: astral-sh/setup-uv@v4db96194c378173c656ce18a155ffc14a9fc4355  # v5.2.2
 
-    - name: Build Sphinx docs 🗿
-      run: |
-        uv run --group docs sphinx-autobuild docs/source docs/_build/html
+      - name: Build Sphinx docs 🗿
+        run: |
+          uv run --group docs sphinx-autobuild docs/source docs/_build/html
 
-    - name: Upload artifact 📤
-      uses: actions/upload-pages-artifact@v3
-      with:
-        name: static-docs
-        path: docs/_build/html
+      - name: Upload artifact 📤
+        uses: actions/upload-pages-artifact@v3
+        with:
+          name: static-docs
+          path: docs/_build/html
 
   deploy-docs:
     environment:
