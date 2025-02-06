@@ -22,6 +22,7 @@ sys.path.insert(0, os.path.abspath('.'))
 
 extensions = [
     'sphinx.ext.autodoc',
+    'sphinx.ext.githubpages',
     'sphinx.ext.napoleon',
     'sphinx_copybutton',
     'myst_parser',
