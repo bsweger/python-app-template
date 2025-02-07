@@ -56,6 +56,8 @@ def render_templates(context: dict, templates_dir: Path, target_dir: Path):
     for template_file in templates_dir.rglob('*'):
         if template_file.is_file():
             rel_path = template_file.relative_to(templates_dir)
+            if str(rel_path.parents[0]).startswith('docs') and not context.get('docs'):
+                continue
             template = env.get_template(str(rel_path))
             output = template.render(**context)
 
