@@ -9,8 +9,8 @@
    :caption: Contents:
 
    usage
-   CONTRIBUTING
-   CHANGELOG
+   contributing
+   changelog
 
 .. include:: readme.md
    :parser: myst_parser.sphinx_

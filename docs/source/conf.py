@@ -8,6 +8,7 @@
 
 import os
 import sys
+from datetime import datetime
 from importlib import metadata
 
 # If extensions (or modules to document with autodoc) are in another directory,
@@ -42,8 +43,9 @@ source_suffix = ['.rst', '.md']
 master_doc = 'index'
 
 # project information
+now = datetime.now()
 project = 'pyprefab'
-copyright = '2025, Becky Sweger'
+copyright = f'{now.year}, Becky Sweger | Last update {now.strftime("%B %d, %Y")}'
 author = 'Becky Sweger'
 
 version = metadata.version('pyprefab')
@@ -76,7 +78,7 @@ html_static_path = ['_static']
 html_theme_options = {
     # 'logo': 'beepboop.png',
     # 'logo_name': True,
-    'description': 'Simple CLI for Python project scaffolding',
+    'description': f'Simple CLI for Python project scaffolding\n{release}',
     'github_user': 'bsweger',
     'github_repo': 'pyprefab',
     'github_banner': True,
@@ -157,7 +159,7 @@ html_last_updated_fmt = '%b %d, %Y'
 # html_show_sourcelink = True
 
 # If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
-# html_show_sphinx = True
+html_show_sphinx = False
 
 # If true, "(C) Copyright ..." is shown in the HTML footer. Default is True.
 # html_show_copyright = True
