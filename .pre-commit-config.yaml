@@ -1,3 +1,8 @@
+exclude: |
+    (?x)(
+        ^test/__snapshots__/
+    )
+
 repos:
 - repo: https://github.com/astral-sh/uv-pre-commit
   # uv version.
@@ -28,3 +33,4 @@ repos:
   rev: v2.3.0
   hooks:
   - id: codespell
+    args: ['--skip', 'test/__snapshots__/*.*']

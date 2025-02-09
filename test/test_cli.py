@@ -1,16 +1,27 @@
+"""Test the pyprefab cli."""
+
 from unittest.mock import patch
 
+import pytest
 from typer.testing import CliRunner
 
 from pyprefab.cli import app  # type: ignore
 
 
-def test_pyprefab_cli(tmp_path):
+@pytest.mark.parametrize(
+    'cli_inputs, expected_dirs',
+    [
+        (['pytest_project', '--author', 'Py Test'], ['.github', 'src', 'test']),
+        (['pytest_project', '--author', 'Py Test', '--docs'], ['.github', 'docs', 'src', 'test']),
+    ],
+)
+def test_pyprefab_cli(tmp_path, cli_inputs, expected_dirs):
     runner = CliRunner()
     project_dir = tmp_path / 'test_cli'
+
     result = runner.invoke(
         app,
-        ['pytest_project', '--author', 'Py Test', '--dir', project_dir],
+        cli_inputs + ['--dir', project_dir],
         input='""\n',
     )
     assert result.exit_code == 0
@@ -19,7 +30,6 @@ def test_pyprefab_cli(tmp_path):
     # project directory populated with template output contains expected folders
     dir_count = 0
     dir_names = []
-    expected_dirs = ['.github', 'src', 'test']
     for child in project_dir.iterdir():
         if child.is_dir():
             dir_names.append(child.name)

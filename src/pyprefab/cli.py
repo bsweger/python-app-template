@@ -78,7 +78,7 @@ def render_templates(context: dict, templates_dir: Path, target_dir: Path):
 
 
 @app.command()
-def create(
+def main(
     name: Annotated[str, typer.Argument(help='Name of the project', show_default=False)],
     author: Annotated[Optional[str], typer.Option(help='Project author', prompt='Project author', show_default=False)],
     description: Annotated[
@@ -156,9 +156,5 @@ def create(
         raise typer.Exit(1)
 
 
-def main():
-    app()
-
-
 if __name__ == '__main__':
-    main()
+    app()

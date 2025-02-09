@@ -27,6 +27,8 @@ dev = [
     'pytest',
     "pytest-random-order>=1.1.1",
     'ruff',
+    "sphinx>=7.4.7",
+    "syrupy>=4.8.1",
     "tomli>=2.2.1",
 ]
 docs = [
