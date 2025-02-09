@@ -15,7 +15,7 @@ def setup_logging():
         # If we're in a terminal, pretty print the logs.
         processors = shared_processors + [
             structlog.dev.ConsoleRenderer(),
-        ]
+        ]  # pragma: no cover
     else:
         # Otherwise, output logs in JSON format
         processors = shared_processors + [
