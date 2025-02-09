@@ -97,7 +97,6 @@ def main(
         False,
         '--docs',
         help='Include Sphinx documentation files',
-        is_flag=True,
         show_default=False,
     ),
 ):
