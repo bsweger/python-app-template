@@ -222,7 +222,7 @@
       'sphinx.ext.viewcode',
       # adds a copy button to code blocks
       'sphinx_copybutton',
-      # generate open graph metadata for docs pagers
+      # generate open graph metadata for docs pages
       'sphinxext.opengraph',
       # use MyST parser for markdown files in Sphinx documentation
       'myst_parser',
@@ -292,7 +292,7 @@
   # further. For a list of options available for each theme, see the
   # documentation.
   html_theme_options = {
-      'description': f'An app for parsin&#39; transporter logs\n{release}',
+      'description': f'An app for parsin&#39; &#34;transporter logs&#34;\n{release}',
       # 'github_user': '',
       # 'github_repo': '',
       # 'github_banner': True,
@@ -463,7 +463,7 @@
       'dependencies': list([
         'structlog',
       ]),
-      'description': "An app for parsin' transporter logs",
+      'description': 'An app for parsin\' "transporter logs"',
       'dynamic': list([
         'version',
       ]),
@@ -529,7 +529,7 @@
   '''
   # transporter_logs
   
-  An app for parsin' transporter logs
+  An app for parsin' "transporter logs"
   
   '''
 # ---

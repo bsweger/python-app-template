@@ -1,9 +1,9 @@
 [project]
 name = "{{ project_name }}"
 dynamic = ['version']
-description = "{{ description }}"
-authors = [{name = "{{ author }}"}]
-maintainers = [{name = "{{ author }}"}]
+description = "{{ description | replace('"', '\\"') }}"
+authors = [{name = "{{ author| replace('"', '\\"') }}"}]
+maintainers = [{name = "{{ author| replace('"', '\\"') }}"}]
 license = {text = 'MIT License'}
 
 requires-python = '>=3.9'
