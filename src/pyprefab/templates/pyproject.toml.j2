@@ -21,6 +21,7 @@ dev = [
     'pytest-random-order>=1.1.1',
     'ruff',
 ]
+{% if docs %}
 docs = [
     'myst-parser>=3.0.1',
     'sphinx>=7.4.7',
@@ -28,6 +29,7 @@ docs = [
     'sphinx-copybutton>=0.5.2',
     "sphinxext-opengraph>=0.9.1",
 ]
+{% endif %}
 
 [project.scripts]
 {{ project_name }} = '{{ project_name }}.app:main'

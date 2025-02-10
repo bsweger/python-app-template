@@ -428,7 +428,7 @@
   
   '''
 # ---
-# name: test_pyproject
+# name: test_pyproject_docs
   dict({
     'build-system': dict({
       'build-backend': 'setuptools.build_meta',
@@ -452,6 +452,96 @@
         'sphinx-autobuild>=2024.10.3',
         'sphinx-copybutton>=0.5.2',
         'sphinxext-opengraph>=0.9.1',
+      ]),
+    }),
+    'project': dict({
+      'authors': list([
+        dict({
+          'name': "Miles O'Brien",
+        }),
+      ]),
+      'dependencies': list([
+        'structlog',
+      ]),
+      'description': 'An app for parsin\' "transporter logs"',
+      'dynamic': list([
+        'version',
+      ]),
+      'license': dict({
+        'text': 'MIT License',
+      }),
+      'maintainers': list([
+        dict({
+          'name': "Miles O'Brien",
+        }),
+      ]),
+      'name': 'transporter_logs',
+      'readme': 'README.md',
+      'requires-python': '>=3.9',
+      'scripts': dict({
+        'transporter_logs': 'transporter_logs.app:main',
+      }),
+      'urls': dict({
+      }),
+    }),
+    'tool': dict({
+      'pytest': dict({
+        'ini_options': dict({
+          'addopts': '--random-order',
+          'testpaths': list([
+            'test',
+          ]),
+        }),
+      }),
+      'ruff': dict({
+        'format': dict({
+          'quote-style': 'single',
+        }),
+        'line-length': 120,
+        'lint': dict({
+          'extend-select': list([
+            'I',
+            'Q',
+          ]),
+          'flake8-quotes': dict({
+            'inline-quotes': 'single',
+          }),
+        }),
+      }),
+      'setuptools': dict({
+        'packages': dict({
+          'find': dict({
+            'namespaces': True,
+            'where': list([
+              'src',
+            ]),
+          }),
+        }),
+      }),
+      'setuptools_scm': dict({
+        'fallback_version': '0.0.0.dev0',
+        'local_scheme': 'no-local-version',
+      }),
+    }),
+  })
+# ---
+# name: test_pyproject_no_docs
+  dict({
+    'build-system': dict({
+      'build-backend': 'setuptools.build_meta',
+      'requires': list([
+        'setuptools>=45',
+        'wheel',
+        'setuptools_scm>=8',
+      ]),
+    }),
+    'dependency-groups': dict({
+      'dev': list([
+        'coverage',
+        'pre-commit',
+        'pytest',
+        'pytest-random-order>=1.1.1',
+        'ruff',
       ]),
     }),
     'project': dict({

@@ -45,16 +45,26 @@ def test_docs_dir(cli_output, snapshot, docs_file):
 
 
 def test_readme(cli_output, snapshot):
-    """Location and contents of README.md are correct."""
+    """README.md contents are correct."""
     project_path, cli_result = cli_output
     with open(project_path / 'README.md', 'r') as f:
         readme = f.read()
     assert readme == snapshot
 
 
-def test_pyproject(cli_output, snapshot):
-    """Location and content of pyproject.toml are correct."""
+def test_pyproject_docs(cli_output, snapshot):
+    """pyproject.toml contents are correct for project with docs."""
     project_path, cli_result = cli_output
     with open(project_path / 'pyproject.toml', 'rb') as f:
         pyproject = tomllib.load(f)
+    assert pyproject.get('dependency-groups', {}).get('docs')
+    assert pyproject == snapshot
+
+
+def test_pyproject_no_docs(cli_output_no_docs, snapshot):
+    """pyproject.toml contents are correct for project without docs."""
+    project_path, cli_result = cli_output_no_docs
+    with open(project_path / 'pyproject.toml', 'rb') as f:
+        pyproject = tomllib.load(f)
+    assert pyproject.get('dependency-groups', {}).get('docs') is None
     assert pyproject == snapshot
