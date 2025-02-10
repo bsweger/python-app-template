@@ -31,6 +31,7 @@ dev = [
     "tomli>=2.2.1",
 ]
 docs = [
+    "matplotlib>=3.9.4",
     "myst-parser>=3.0.1",
     "sphinx>=7.4.7",
     "sphinx-autobuild>=2024.10.3",
