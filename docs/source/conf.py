@@ -24,10 +24,30 @@ sys.path.insert(0, os.path.abspath('.'))
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.githubpages',
+    'sphinx.ext.intersphinx',
     'sphinx.ext.napoleon',
+    'sphinx.ext.viewcode',
     'sphinx_copybutton',
+    'sphinxext.opengraph',
     'myst_parser',
 ]
+
+myst_enable_extensions = [
+    'colon_fence',
+    'fieldlist',
+    'replacements',
+    'tasklist',
+]
+
+# Settings from the copybutton's config
+# https://github.com/executablebooks/sphinx-copybutton/blob/master/docs/conf.py
+# There are useful for ensuring that the copy button only copies code
+# (as prefixed by ">>>" for example) and not the prompt or the output.
+copybutton_prompt_text = r'>>> |\.\.\. |\$ |In \[\d*\]: | {2,5}\.\.\.: | {5,8}: '
+copybutton_prompt_is_regexp = True
+copybutton_line_continuation_character = '\\'
+copybutton_here_doc_delimiter = 'EOT'
+copybutton_selector = 'div:not(.no-copybutton) > div.highlight > pre'
 
 templates_path = ['_templates']
 exclude_patterns = []

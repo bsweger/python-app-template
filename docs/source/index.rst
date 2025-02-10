@@ -5,7 +5,7 @@
 
 .. toctree::
    :hidden:
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
 
    usage

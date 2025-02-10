@@ -9,6 +9,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and the p
 ### Added
 
 - Sphinx-based project documentation (published on GitHub pages)
+- Add `--docs` option to include skeleton documentation in created package
+
+### Fixed
+
+- Add escape character to quotation marks in author name and project description
 
 ## [0.4.0] - [2025-01-26]
 

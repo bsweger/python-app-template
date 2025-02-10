@@ -35,6 +35,7 @@ docs = [
     "sphinx>=7.4.7",
     "sphinx-autobuild>=2024.10.3",
     "sphinx-copybutton>=0.5.2",
+    "sphinxext-opengraph>=0.9.1",
 ]
 
 [project.scripts]

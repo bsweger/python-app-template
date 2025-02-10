@@ -136,6 +136,7 @@ you can submit them by [creating a pull request](https://docs.github.com/en/pull
 Please ensure the following are true before creating the PR:
 
 - Your change is covered by tests, if applicable
+- Project documentation is updated, if applicable
 - All tests pass (`uv run pytest`)
 - All pre-commit checks are successful
 (these checks will run automatically as you make commits)
