@@ -49,6 +49,10 @@ copybutton_line_continuation_character = '\\'
 copybutton_here_doc_delimiter = 'EOT'
 copybutton_selector = 'div:not(.no-copybutton) > div.highlight > pre'
 
+# Open graph settings
+ogp_site_url = 'https://bsweger.github.io/pyprefab/'
+ogp_image = 'https://bsweger.github.io/pyprefab/_static/pyprefab.png'
+
 templates_path = ['_templates']
 exclude_patterns = []
 
