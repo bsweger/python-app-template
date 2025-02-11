@@ -4,8 +4,9 @@ name: Publish docs to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      # only run workflow for tags in release format
+      - "v[0-9]+.[0-9]+.[0-9]+"
   workflow_dispatch:
 
 permissions:
@@ -30,6 +31,7 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
         with:
+          fetch-depth: 0
           persist-credentials: false
 
       - name: Install uv 🌟
