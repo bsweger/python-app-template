@@ -64,27 +64,17 @@ def test_error_cleanup(tmp_path):
     assert project_dir.exists() is False
 
 
-def test_existing_data_prompt(tmp_path):
-    """If there are existing files in project directory, user should receive confirmation prompt."""
+def test_error_existing_data(tmp_path):
+    """If there are existing files in project directory, pyprefab should fail."""
 
     project_dir = tmp_path / 'test_existing_data'
     project_dir.mkdir()
     (project_dir / 'existing_file.txt').touch()
 
-    # prompt response = n
-    runner = CliRunner()
-    result = runner.invoke(
-        app,
-        ['--name', 'pytest_project', '--author', 'Py Test', '--description', 'new project', '--dir', project_dir],
-        input='n\n',
-    )
-    assert result.exit_code != 0
-
-    # prompt response = y
     runner = CliRunner()
     result = runner.invoke(
         app,
         ['--name', 'pytest_project', '--author', 'Py Test', '--description', 'new project', '--dir', project_dir],
         input='y\n',
     )
-    assert result.exit_code == 0
+    assert result.exit_code != 0

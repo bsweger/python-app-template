@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and the p
 ### Changed
 
 - Improve CHANGELOG aesthetics
+- Fail when target directory is not empty (instead of prompting)
 
 ### Fixed
 

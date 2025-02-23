@@ -106,16 +106,17 @@ def main(
     """
     if not validate_project_name(name):
         typer.secho(
-            f'Error: {name} is not a valid Python package name',
+            f'Package not created: {name} is not a valid Python package name',
             fg=typer.colors.RED,
         )
         raise typer.Exit(1)
 
     if project_dir.exists() and any(project_dir.iterdir()):
-        proceed = typer.confirm(f'Directory {project_dir} is not empty. Proceed?')
-        if not proceed:
-            typer.secho(f'{name} not created', fg=typer.colors.YELLOW)
-            raise typer.Exit(code=1)
+        typer.secho(
+            f'Package not created: {str(project_dir)} is not an empty directory',
+            fg=typer.colors.RED,
+        )
+        raise typer.Exit(1)
 
     templates_dir = Path(__file__).parent / 'templates'
     target_dir = project_dir or Path.cwd() / name
