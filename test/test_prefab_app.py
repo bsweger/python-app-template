@@ -28,7 +28,7 @@ def test_logging(cli_output):
     project_path, cli_result = cli_output
 
     module_path = project_path / 'src'
-    with open(module_path / 'log_test.py', 'w') as f:
+    with open(module_path / 'log_test.py', 'w', encoding='utf-8') as f:
         f.write('import transporter_logs\n')
         f.write('logger = transporter_logs.structlog.get_logger()\n')
         f.write('logger.info("log test")\n')

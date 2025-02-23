@@ -74,7 +74,7 @@ def render_templates(context: dict, templates_dir: Path, target_dir: Path):
             # Create destination path preserving structure
             dest_file = target_dir.joinpath(*path_parts)
             dest_file.parent.mkdir(parents=True, exist_ok=True)
-            with open(dest_file, 'w', newline='\n') as f:
+            with open(dest_file, 'w', encoding='utf-8', newline='\n') as f:
                 f.write(output)
 
 

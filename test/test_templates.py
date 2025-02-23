@@ -12,7 +12,7 @@ except ModuleNotFoundError:
 def test_changelog(cli_output, snapshot):
     """Location and contents of CHANGELOG.md are correct."""
     project_path, cli_result = cli_output
-    with open(project_path / 'CHANGELOG.md', 'r') as f:
+    with open(project_path / 'CHANGELOG.md', 'r', encoding='utf-8') as f:
         changelog = f.read()
     assert changelog == snapshot
 
@@ -20,7 +20,7 @@ def test_changelog(cli_output, snapshot):
 def test_contributing(cli_output, snapshot):
     """Location and contents of CHANGELOG.md are correct."""
     project_path, cli_result = cli_output
-    with open(project_path / 'CONTRIBUTING.md', 'r') as f:
+    with open(project_path / 'CONTRIBUTING.md', 'r', encoding='utf-8') as f:
         contributing = f.read()
     assert contributing == snapshot
 
@@ -39,7 +39,7 @@ def test_contributing(cli_output, snapshot):
 def test_docs_dir(cli_output, snapshot, docs_file):
     """Documentation contents are correct."""
     project_path, cli_result = cli_output
-    with open(project_path / 'docs' / 'source' / docs_file, 'r') as f:
+    with open(project_path / 'docs' / 'source' / docs_file, 'r', encoding='utf-8') as f:
         file = f.read()
     assert file == snapshot
 
@@ -47,7 +47,7 @@ def test_docs_dir(cli_output, snapshot, docs_file):
 def test_readme(cli_output, snapshot):
     """README.md contents are correct."""
     project_path, cli_result = cli_output
-    with open(project_path / 'README.md', 'r') as f:
+    with open(project_path / 'README.md', 'r', encoding='utf-8') as f:
         readme = f.read()
     assert readme == snapshot
 
