@@ -80,24 +80,43 @@ def render_templates(context: dict, templates_dir: Path, target_dir: Path):
 
 @app.command()
 def main(
-    name: Annotated[Optional[str], typer.Option(help='Name of the project', prompt='Project name', show_default=False)],
-    author: Annotated[Optional[str], typer.Option(help='Project author', prompt='Project author', show_default=False)],
+    name: Annotated[
+        Optional[str],
+        typer.Option(
+            help='Name of the project',
+            prompt=typer.style('Project name 🐍', fg=typer.colors.MAGENTA, bold=True),
+            show_default=False,
+        ),
+    ],
+    author: Annotated[
+        Optional[str],
+        typer.Option(
+            help='Project author',
+            prompt=typer.style('Project author 👤', fg=typer.colors.MAGENTA, bold=True),
+            show_default=False,
+        ),
+    ],
     description: Annotated[
-        Optional[str], typer.Option(help='Project description', prompt='Project description', show_default=False)
+        Optional[str],
+        typer.Option(
+            help='Project description',
+            prompt=typer.style('Project description 📝', fg=typer.colors.MAGENTA, bold=True),
+            show_default=False,
+        ),
     ],
     project_dir: Annotated[
         Path,
         typer.Option(
             '--dir',
             help='Directory that will contain the project',
-            prompt='Project directory',
+            prompt=typer.style('Project directory 🎬', fg=typer.colors.MAGENTA, bold=True),
             show_default=False,
         ),
     ],
     docs: bool = typer.Option(
         False,
         '--docs',
-        help='Include Sphinx documentation files',
+        help='Include Sphinx documentation files 📄',
         show_default=False,
     ),
 ):
@@ -105,16 +124,24 @@ def main(
     🐍 Create Python package boilerplate 🐍
     """
     if not validate_project_name(name):
-        typer.secho(
-            f'Package not created: {name} is not a valid Python package name',
-            fg=typer.colors.RED,
+        err_console = Console(stderr=True)
+        err_console.print(
+            Panel.fit(
+                f'⛔️ Package not created: {name} is not a valid Python package name',
+                title='pyprefab error',
+                border_style='red',
+            )
         )
         raise typer.Exit(1)
 
     if project_dir.exists() and any(project_dir.iterdir()):
-        typer.secho(
-            f'Package not created: {str(project_dir)} is not an empty directory',
-            fg=typer.colors.RED,
+        err_console = Console(stderr=True)
+        err_console.print(
+            Panel.fit(
+                f'⛔️ Package not created: {str(project_dir)} is not an empty directory',
+                title='pyprefab error',
+                border_style='red',
+            )
         )
         raise typer.Exit(1)
 
@@ -151,6 +178,14 @@ def main(
         )
 
     except Exception as e:
+        err_console = Console(stderr=True)
+        err_console.print(
+            Panel.fit(
+                f'⛔️ Error creating project: {str(e)}',
+                title='pyprefab error',
+                border_style='red',
+            )
+        )
         typer.secho(f'Error creating project: {str(e)}', fg=typer.colors.RED)
         if target_dir.exists():
             shutil.rmtree(target_dir)
