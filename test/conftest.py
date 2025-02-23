@@ -10,6 +10,7 @@ def cli_output(tmp_path):
     result = runner.invoke(
         app,
         [
+            '--name',
             'transporter_logs',
             '--author',
             "Miles O'Brien",
@@ -29,6 +30,7 @@ def cli_output_no_docs(tmp_path):
     result = runner.invoke(
         app,
         [
+            '--name',
             'transporter_logs',
             '--author',
             "Miles O'Brien",

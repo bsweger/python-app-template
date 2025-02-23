@@ -1,6 +1,7 @@
 """Command-line interface for the pyprefab package."""
 
 import shutil
+import sys
 from pathlib import Path
 from typing import Optional
 
@@ -79,7 +80,7 @@ def render_templates(context: dict, templates_dir: Path, target_dir: Path):
 
 @app.command()
 def main(
-    name: Annotated[str, typer.Argument(help='Name of the project', show_default=False)],
+    name: Annotated[Optional[str], typer.Option(help='Name of the project', prompt='Project name', show_default=False)],
     author: Annotated[Optional[str], typer.Option(help='Project author', prompt='Project author', show_default=False)],
     description: Annotated[
         Optional[str], typer.Option(help='Project description', prompt='Project description', show_default=False)
@@ -156,4 +157,4 @@ def main(
 
 
 if __name__ == '__main__':
-    app()  # pragma: no cover
+    sys.exit(app())  # pragma: no cover

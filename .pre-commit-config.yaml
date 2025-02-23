@@ -33,4 +33,4 @@ repos:
   rev: v2.3.0
   hooks:
   - id: codespell
-    args: ['--skip', 'test/__snapshots__/*.*']
+    args: ['--skip', 'test/__snapshots__/*.*', '--ignore-words-list', 'parsin']

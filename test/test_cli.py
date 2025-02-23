@@ -11,8 +11,8 @@ from pyprefab.cli import app  # type: ignore
 @pytest.mark.parametrize(
     'cli_inputs, expected_dirs',
     [
-        (['pytest_project', '--author', 'Py Test'], ['.github', 'src', 'test']),
-        (['pytest_project', '--author', 'Py Test', '--docs'], ['.github', 'docs', 'src', 'test']),
+        (['--name', 'pytest_project', '--author', 'Py Test'], ['.github', 'src', 'test']),
+        (['--name', 'pytest_project', '--author', 'Py Test', '--docs'], ['.github', 'docs', 'src', 'test']),
     ],
 )
 def test_pyprefab_cli(tmp_path, cli_inputs, expected_dirs):
@@ -43,7 +43,7 @@ def test_invalid_project_name(tmp_path):
     runner = CliRunner()
     result = runner.invoke(
         app,
-        ['pytest-project', '--author', 'Py Test', '--dir', tmp_path],
+        ['--name', 'pytest-project', '--author', 'Py Test', '--dir', tmp_path],
         input='This is a test project\n',
     )
     assert result.exit_code != 0
@@ -56,7 +56,7 @@ def test_error_cleanup(tmp_path):
         runner = CliRunner()
         result = runner.invoke(
             app,
-            ['pytest_project', '--description', '', '--dir', project_dir],
+            ['--name', 'pytest_project', '--description', '', '--dir', project_dir],
             input='Py Test\n',
         )
     assert result.exit_code != 0
@@ -75,7 +75,7 @@ def test_existing_data_prompt(tmp_path):
     runner = CliRunner()
     result = runner.invoke(
         app,
-        ['pytest_project', '--author', 'Py Test', '--description', 'new project', '--dir', project_dir],
+        ['--name', 'pytest_project', '--author', 'Py Test', '--description', 'new project', '--dir', project_dir],
         input='n\n',
     )
     assert result.exit_code != 0
@@ -84,7 +84,7 @@ def test_existing_data_prompt(tmp_path):
     runner = CliRunner()
     result = runner.invoke(
         app,
-        ['pytest_project', '--author', 'Py Test', '--description', 'new project', '--dir', project_dir],
+        ['--name', 'pytest_project', '--author', 'Py Test', '--description', 'new project', '--dir', project_dir],
         input='y\n',
     )
     assert result.exit_code == 0
