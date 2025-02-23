@@ -4,14 +4,24 @@ All notable changes to `pyprefab` are documented here.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com), and the project uses [Semantic Versioning](https://semver.org/).
 
-## [0.5.1] - [2025-02-10]
+## Unreleased
+
+### Changed
+
+- Improve CHANGELOG aesthetics
+
+### Fixed
+
+- Ensure pyprefab can run as `python -m pyprefab`
+
+## 0.5.1
 
 ### Fixed
 
 - Fail docs build GitHub action on Sphinx error or warning
 - Correct pyprefab version retrieved during doc build
 
-## [0.5.0] - [2025-02-10]
+## 0.5.0
 
 ### Added
 
@@ -22,7 +32,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and the p
 
 - Add escape character to quotation marks in author name and project description
 
-## [0.4.0] - [2025-01-26]
+## 0.4.0
 
 ### Added
 
@@ -42,13 +52,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and the p
 
 - Correct CLI example on README.md
 
-## [0.3.2] - [2025-01-13](https://github.com/bsweger/pyprefab/compare/v0.3.1...v0.3.2)
+## 0.3.2
 
 ### Changed
 
 - Rename CLI command to `pyprefab`
 
-## [0.3.1] - [2025-01-13](https://github.com/bsweger/pyprefab/compare/v0.3.0...v0.3.1)
+## 0.3.1
 
 ### Added
 
@@ -62,7 +72,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and the p
 
 - Removed sample `hello_world` module in favor of template-driven boilerplate
 
-## [0.3.0] - [2025-01-12](https://github.com/bsweger/pyprefab/compare/v0.2.1...v0.3.0)
+## 0.3.0
 
 ### Added
 
