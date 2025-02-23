@@ -4,12 +4,13 @@ All notable changes to `pyprefab` are documented here.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com), and the project uses [Semantic Versioning](https://semver.org/).
 
-## Unreleased
+## 0.5.2
 
 ### Changed
 
 - Improve CHANGELOG aesthetics
 - Fail when target directory is not empty (instead of prompting)
+- Add colors and default values to CLI prompts
 
 ### Fixed
 

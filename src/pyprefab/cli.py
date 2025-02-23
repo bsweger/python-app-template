@@ -93,31 +93,27 @@ def main(
         typer.Option(
             help='Project author',
             prompt=typer.style('Project author 👤', fg=typer.colors.MAGENTA, bold=True),
-            show_default=False,
         ),
-    ],
+    ] = 'None',
     description: Annotated[
         Optional[str],
         typer.Option(
             help='Project description',
             prompt=typer.style('Project description 📝', fg=typer.colors.MAGENTA, bold=True),
-            show_default=False,
         ),
-    ],
+    ] = 'None',
     project_dir: Annotated[
         Path,
         typer.Option(
             '--dir',
             help='Directory that will contain the project',
             prompt=typer.style('Project directory 🎬', fg=typer.colors.MAGENTA, bold=True),
-            show_default=False,
         ),
-    ],
+    ] = Path.cwd(),
     docs: bool = typer.Option(
         False,
         '--docs',
         help='Include Sphinx documentation files 📄',
-        show_default=False,
     ),
 ):
     """
